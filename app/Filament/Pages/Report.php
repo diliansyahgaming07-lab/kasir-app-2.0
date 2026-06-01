@@ -65,8 +65,11 @@ class Report extends Page
     
     public function loadChartData()
     {
+        $start = $this->startDate ?? now()->startOfMonth();
+        $end = $this->endDate ?? now();
+        
         $salesData = Transaction::where('status', 'completed')
-            ->whereBetween('created_at', [$this->startDate, $this->endDate])
+            ->whereBetween('created_at', [$start, $end])
             ->selectRaw('DATE(created_at) as date, SUM(total_amount) as total')
             ->groupBy('date')
             ->orderBy('date')
@@ -74,7 +77,7 @@ class Report extends Page
         
         $this->chartData = [
             'labels' => $salesData->pluck('date')->map(function($date) {
-                return date('d/m', strtotime($date));
+                return date('d/m/Y', strtotime($date));
             }),
             'values' => $salesData->pluck('total')
         ];
@@ -84,12 +87,14 @@ class Report extends Page
     {
         $this->loadData();
         $this->loadChartData();
+        $this->dispatch('refreshChart');
     }
     
     public function updatedEndDate()
     {
         $this->loadData();
         $this->loadChartData();
+        $this->dispatch('refreshChart');
     }
     
     public function getTopProductsProperty()
@@ -114,5 +119,19 @@ class Report extends Page
     public function exportExcel()
     {
         return Excel::download(new LaporanPenjualanExport($this->startDate, $this->endDate), 'laporan-penjualan-' . now()->format('Y-m-d') . '.xlsx');
+    }
+    
+    protected function getListeners()
+    {
+        return [
+            'refreshChart' => '$refresh',
+        ];
+    }
+    
+    public function refreshData()
+    {
+        $this->loadData();
+        $this->loadChartData();
+        $this->dispatch('refreshChart');
     }
 }

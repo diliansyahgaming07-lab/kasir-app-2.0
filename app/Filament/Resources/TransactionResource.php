@@ -21,25 +21,26 @@ class TransactionResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('invoice_number')
-                    ->required()
-                    ->maxLength(255)
-                    ->label('Invoice Number'),
+                    ->label('Invoice Number')
+                    ->disabled(),
                 Forms\Components\TextInput::make('customer_name')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('Umum')
-                    ->label('Customer Name'),
+                    ->label('Customer Name')
+                    ->required(),
+                Forms\Components\TextInput::make('phone')
+                    ->label('No. Telepon')
+                    ->disabled(),
+                Forms\Components\Textarea::make('shipping_address')
+                    ->label('Alamat Pengiriman')
+                    ->disabled(),
                 Forms\Components\Select::make('member_id')
                     ->relationship('member', 'name')
                     ->nullable()
                     ->label('Member'),
                 Forms\Components\TextInput::make('total_amount')
-                    ->required()
                     ->numeric()
                     ->prefix('Rp')
                     ->label('Total Amount'),
                 Forms\Components\TextInput::make('paid_amount')
-                    ->required()
                     ->numeric()
                     ->prefix('Rp')
                     ->label('Paid Amount'),
@@ -65,8 +66,19 @@ class TransactionResource extends Resource
                         'cancelled' => 'Cancelled',
                     ])
                     ->required()
-                    ->default('completed')
-                    ->label('Status'),
+                    ->default('pending')
+                    ->label('Payment Status'),
+                Forms\Components\Select::make('order_status')
+                    ->options([
+                        'pending' => '🕐 Menunggu Konfirmasi',
+                        'processing' => '⚙️ Sedang Diproses',
+                        'shipped' => '🚚 Dikirim',
+                        'delivered' => '✅ Selesai',
+                        'cancelled' => '❌ Dibatalkan',
+                    ])
+                    ->required()
+                    ->default('pending')
+                    ->label('Order Status'),
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
                     ->required()
@@ -87,6 +99,12 @@ class TransactionResource extends Resource
                 Tables\Columns\TextColumn::make('customer_name')
                     ->label('Customer')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('phone')
+                    ->label('No. Telepon')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('shipping_address')
+                    ->label('Alamat')
+                    ->limit(30),
                 Tables\Columns\TextColumn::make('total_amount')
                     ->label('Total')
                     ->money('IDR')
@@ -99,8 +117,18 @@ class TransactionResource extends Resource
                         'debit' => '💳 Debit',
                         'credit' => '💎 Kredit',
                     ][$state] ?? $state),
+                Tables\Columns\TextColumn::make('order_status')
+                    ->label('Order Status')
+                    ->badge()
+                    ->color(fn ($state) => match ($state) {
+                        'pending' => 'warning',
+                        'processing' => 'info',
+                        'shipped' => 'primary',
+                        'delivered' => 'success',
+                        'cancelled' => 'danger',
+                    }),
                 Tables\Columns\TextColumn::make('status')
-                    ->label('Status')
+                    ->label('Payment Status')
                     ->badge()
                     ->color(fn ($state) => match ($state) {
                         'completed' => 'success',
@@ -114,11 +142,13 @@ class TransactionResource extends Resource
                     ->label('Cashier'),
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('status')
+                Tables\Filters\SelectFilter::make('order_status')
                     ->options([
-                        'completed' => 'Completed',
-                        'pending' => 'Pending',
-                        'cancelled' => 'Cancelled',
+                        'pending' => 'Menunggu',
+                        'processing' => 'Diproses',
+                        'shipped' => 'Dikirim',
+                        'delivered' => 'Selesai',
+                        'cancelled' => 'Dibatalkan',
                     ]),
                 Tables\Filters\SelectFilter::make('payment_method')
                     ->options([
