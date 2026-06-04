@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Orders - GearStore</title>
+    <title>My Orders - FoodHub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -16,10 +16,7 @@
         .status-proses { background: #f59e0b; }
         .status-dikirim { background: #3b82f6; }
         .status-diterima { background: #10b981; }
-        .btn-primary {
-            background: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%);
-            transition: all 0.3s ease;
-        }
+        .btn-primary { background: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%); transition: all 0.3s ease; }
         .btn-primary:hover { transform: scale(1.05); }
     </style>
 </head>
@@ -28,7 +25,7 @@
 <nav class="navbar fixed top-0 w-full z-50">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <a href="/" class="text-2xl font-bold">
-            <span class="gradient-primary bg-clip-text text-transparent">GEAR</span><span class="text-white">STORE</span>
+            <span class="gradient-primary bg-clip-text text-transparent">FOOD</span><span class="text-white">HUB</span>
         </a>
         <div class="flex items-center gap-6">
             <a href="/cart" class="text-gray-300 hover:text-cyan-400">🛒</a>

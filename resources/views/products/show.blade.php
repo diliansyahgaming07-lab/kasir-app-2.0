@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $product->name }} - GearStore</title>
+    <title>{{ $product->name }} - FoodHub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -20,11 +20,10 @@
 </head>
 <body>
 
-{{-- NAVBAR --}}
 <nav class="navbar fixed top-0 w-full z-50">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <a href="/" class="text-2xl font-bold">
-            <span class="gradient-primary bg-clip-text text-transparent">GEAR</span><span class="text-white">STORE</span>
+            <span class="gradient-primary bg-clip-text text-transparent">FOOD</span><span class="text-white">HUB</span>
         </a>
         <div class="flex items-center gap-6">
             <a href="/produk" class="text-gray-300 hover:text-cyan-400">← Back</a>
@@ -36,16 +35,13 @@
     </div>
 </nav>
 
-{{-- PRODUCT DETAIL --}}
 <section class="pt-32 pb-20">
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {{-- Image --}}
             <div class="gradient-primary rounded-2xl h-96 flex items-center justify-center">
-                <div class="text-8xl">{{ $product->category->icon ?? '⚡' }}</div>
+                <div class="text-8xl">{{ $product->category->icon ?? '🍽️' }}</div>
             </div>
             
-            {{-- Info --}}
             <div>
                 <span class="text-cyan-400 text-sm">{{ $product->category->name }}</span>
                 <h1 class="text-4xl font-bold mt-2">{{ $product->name }}</h1>

@@ -17,6 +17,12 @@ Route::post('/logout-customer', [CustomerAuthController::class, 'logout'])->name
 
 // Halaman Frontend (Toko Online)
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 Route::get('/produk', [ProductController::class, 'index'])->name('products.index');
 Route::get('/produk/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

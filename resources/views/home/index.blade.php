@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GearStore - Premium Equipment</title>
+    <title>FoodHub - Premium Kuliner</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -68,16 +68,16 @@
 <nav class="navbar fixed top-0 w-full z-50">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <a href="/" class="text-2xl font-bold flex items-center gap-2">
-            <span class="text-3xl">⚡</span>
-            <span class="gradient-primary bg-clip-text text-transparent">GEAR<span class="text-white">STORE</span></span>
+            <span class="text-3xl">🍔</span>
+            <span class="gradient-primary bg-clip-text text-transparent">FOOD<span class="text-white">HUB</span></span>
         </a>
         
         <div class="hidden md:flex items-center gap-8">
             <a href="/" class="text-gray-300 hover:text-cyan-400 transition">HOME</a>
-            <a href="/produk" class="text-gray-300 hover:text-cyan-400 transition">PRODUCTS</a>
-            @auth <a href="/orders" class="text-gray-300 hover:text-cyan-400 transition">📦 ORDERS</a> @endauth
-            <a href="/about" class="text-gray-300 hover:text-cyan-400 transition">ABOUT</a>
-            <a href="/contact" class="text-gray-300 hover:text-cyan-400 transition">CONTACT</a>
+            <a href="/produk" class="text-gray-300 hover:text-cyan-400 transition">MENU</a>
+            @auth <a href="/orders" class="text-gray-300 hover:text-cyan-400 transition">📦 PESANAN</a> @endauth
+            <a href="/about" class="text-gray-300 hover:text-cyan-400 transition">TENTANG</a>
+            <a href="/contact" class="text-gray-300 hover:text-cyan-400 transition">KONTAK</a>
         </div>
         
         <div class="flex items-center gap-4">
@@ -99,18 +99,18 @@
                         @if(Auth::user()->role == 'admin')
                             <a href="/admin" class="block px-4 py-2 hover:bg-cyan-500/20 rounded-t-xl transition">👑 Admin Panel</a>
                         @endif
-                        <a href="/orders" class="block px-4 py-2 hover:bg-cyan-500/20 transition">📦 My Orders</a>
-                        <a href="/profile" class="block px-4 py-2 hover:bg-cyan-500/20 transition">⚙️ Profile</a>
+                        <a href="/orders" class="block px-4 py-2 hover:bg-cyan-500/20 transition">📦 Pesanan Saya</a>
+                        <a href="/profile" class="block px-4 py-2 hover:bg-cyan-500/20 transition">⚙️ Profil</a>
                         <div class="border-t border-gray-700 my-1"></div>
                         <form method="POST" action="{{ Auth::user()->role == 'admin' ? '/logout' : '/logout-customer' }}">
                             @csrf
-                            <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-cyan-500/20 rounded-b-xl transition">🚪 Logout</button>
+                            <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-cyan-500/20 rounded-b-xl transition">🚪 Keluar</button>
                         </form>
                     </div>
                 </div>
             @else
                 <a href="/login-customer" class="text-gray-300 hover:text-cyan-400 transition px-3 py-1">Login</a>
-                <a href="/register-customer" class="btn-primary px-4 py-2 rounded-lg font-semibold text-white transition">Register</a>
+                <a href="/register-customer" class="btn-primary px-4 py-2 rounded-lg font-semibold text-white transition">Daftar</a>
             @endauth
         </div>
     </div>
@@ -123,22 +123,22 @@
     <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
     
     <div class="relative container mx-auto px-6 text-center z-10">
-        <div class="animate-float"><span class="text-cyan-400 font-semibold tracking-wider text-sm md:text-base">⚡ PREMIUM GEAR ⚡</span></div>
+        <div class="animate-float"><span class="text-cyan-400 font-semibold tracking-wider text-sm md:text-base">🍜 MAKANAN ENAK 🍜</span></div>
         <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mt-4 leading-tight">
-            <span class="gradient-primary bg-clip-text text-transparent">Level Up</span>
-            <span class="text-white"> Your</span><br>
-            <span class="text-white">Performance</span>
+            <span class="gradient-primary bg-clip-text text-transparent">Nikmati</span>
+            <span class="text-white"> Setiap</span><br>
+            <span class="text-white">Gigitan</span>
         </h1>
-        <p class="text-base md:text-xl text-gray-400 mt-6 max-w-2xl mx-auto">Equipment premium untuk mendukung aktivitas Anda. Kualitas terbaik, harga terjangkau.</p>
+        <p class="text-base md:text-xl text-gray-400 mt-6 max-w-2xl mx-auto">Makanan & minuman lezat, siap memanjakan lidah Anda. Dari masakan tradisional hingga modern, semua ada di sini.</p>
         <div class="flex flex-wrap gap-4 justify-center mt-8">
-            <a href="/produk" class="btn-primary px-6 md:px-8 py-2 md:py-3 rounded-lg font-semibold text-white transition text-sm md:text-base">🚀 Shop Now</a>
-            <a href="#products" class="btn-outline px-6 md:px-8 py-2 md:py-3 rounded-lg font-semibold text-cyan-400 transition text-sm md:text-base">View Collection</a>
+            <a href="/produk" class="btn-primary px-6 md:px-8 py-2 md:py-3 rounded-lg font-semibold text-white transition text-sm md:text-base">🍽️ Pesan Sekarang</a>
+            <a href="#products" class="btn-outline px-6 md:px-8 py-2 md:py-3 rounded-lg font-semibold text-cyan-400 transition text-sm md:text-base">Lihat Menu</a>
         </div>
         
         <div class="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto mt-12 md:mt-16">
-            <div><div class="text-2xl md:text-3xl font-bold text-cyan-400">500+</div><div class="text-xs md:text-sm text-gray-500">Products</div></div>
-            <div><div class="text-2xl md:text-3xl font-bold text-cyan-400">10k+</div><div class="text-xs md:text-sm text-gray-500">Happy Customers</div></div>
-            <div><div class="text-2xl md:text-3xl font-bold text-cyan-400">24/7</div><div class="text-xs md:text-sm text-gray-500">Support</div></div>
+            <div><div class="text-2xl md:text-3xl font-bold text-cyan-400">100+</div><div class="text-xs md:text-sm text-gray-500">Menu</div></div>
+            <div><div class="text-2xl md:text-3xl font-bold text-cyan-400">5k+</div><div class="text-xs md:text-sm text-gray-500">Pelanggan</div></div>
+            <div><div class="text-2xl md:text-3xl font-bold text-cyan-400">30min</div><div class="text-xs md:text-sm text-gray-500">Siap Saji</div></div>
         </div>
     </div>
     
@@ -153,26 +153,26 @@
 <section id="products" class="py-20 gradient-dark">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <span class="text-cyan-400 font-semibold tracking-wider">🔥 HOT DEALS 🔥</span>
-            <h2 class="text-4xl font-bold mt-2">Featured Products</h2>
-            <p class="text-gray-400 mt-4">Produk pilihan dengan kualitas terbaik</p>
+            <span class="text-cyan-400 font-semibold tracking-wider">🔥 MENU ANDALAN 🔥</span>
+            <h2 class="text-4xl font-bold mt-2">Menu Populer</h2>
+            <p class="text-gray-400 mt-4">Pilihan favorit pelanggan kami</p>
         </div>
         
         <div class="flex flex-wrap justify-center gap-3 mb-10">
-            <button onclick="filterProducts('all', this)" class="filter-btn active px-5 py-2 rounded-full bg-cyan-500 text-white font-semibold transition">All</button>
+            <button onclick="filterProducts('all', this)" class="filter-btn active px-5 py-2 rounded-full bg-cyan-500 text-white font-semibold transition">Semua</button>
             @foreach($categories as $category)
                 <button onclick="filterProducts('{{ $category->id }}', this)" class="filter-btn px-5 py-2 rounded-full bg-gray-800 text-gray-300 hover:bg-cyan-500 hover:text-white transition">
-                    {{ $category->icon ?? '📦' }} {{ $category->name }}
+                    {{ $category->icon ?? '🍽️' }} {{ $category->name }}
                 </button>
             @endforeach
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="productsGrid">
-            <div class="text-center py-20 col-span-full"><div class="inline-block w-8 h-8 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin"></div><p class="text-gray-400 mt-4">Loading products...</p></div>
+            <div class="text-center py-20 col-span-full"><div class="inline-block w-8 h-8 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin"></div><p class="text-gray-400 mt-4">Memuat menu...</p></div>
         </div>
         
         <div class="text-center mt-12">
-            <a href="/produk" class="btn-outline px-8 py-3 rounded-lg font-semibold text-cyan-400 transition inline-block">View All Products →</a>
+            <a href="/produk" class="btn-outline px-8 py-3 rounded-lg font-semibold text-cyan-400 transition inline-block">Lihat Semua Menu →</a>
         </div>
     </div>
 </section>
@@ -181,9 +181,9 @@
 <section class="py-20">
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="gradient-card p-6 rounded-2xl text-center border border-gray-800 hover:border-cyan-400 transition"><div class="text-5xl mb-4">🚚</div><h3 class="text-xl font-bold mb-2">Free Shipping</h3><p class="text-gray-400">Gratis ongkir untuk pembelian di atas Rp 500.000</p></div>
-            <div class="gradient-card p-6 rounded-2xl text-center border border-gray-800 hover:border-cyan-400 transition"><div class="text-5xl mb-4">🛡️</div><h3 class="text-xl font-bold mb-2">Secure Payment</h3><p class="text-gray-400">100% payment aman dan terjamin</p></div>
-            <div class="gradient-card p-6 rounded-2xl text-center border border-gray-800 hover:border-cyan-400 transition"><div class="text-5xl mb-4">🔄</div><h3 class="text-xl font-bold mb-2">14 Days Return</h3><p class="text-gray-400">Garansi uang kembali jika produk rusak</p></div>
+            <div class="gradient-card p-6 rounded-2xl text-center border border-gray-800 hover:border-cyan-400 transition"><div class="text-5xl mb-4">🚚</div><h3 class="text-xl font-bold mb-2">Gratis Ongkir</h3><p class="text-gray-400">Minimal pemesanan Rp 100.000</p></div>
+            <div class="gradient-card p-6 rounded-2xl text-center border border-gray-800 hover:border-cyan-400 transition"><div class="text-5xl mb-4">🛡️</div><h3 class="text-xl font-bold mb-2">Halal Terjamin</h3><p class="text-gray-400">100% Halal dan higienis</p></div>
+            <div class="gradient-card p-6 rounded-2xl text-center border border-gray-800 hover:border-cyan-400 transition"><div class="text-5xl mb-4">🔄</div><h3 class="text-xl font-bold mb-2">Fresh Cooking</h3><p class="text-gray-400">Dimasak saat dipesan</p></div>
         </div>
     </div>
 </section>
@@ -192,11 +192,11 @@
 <section class="py-20 relative overflow-hidden">
     <div class="absolute inset-0 gradient-primary opacity-10"></div>
     <div class="container mx-auto px-6 text-center relative">
-        <h2 class="text-4xl font-bold mb-4">Ready to Level Up?</h2>
-        <p class="text-gray-400 mb-8 max-w-2xl mx-auto">Dapatkan produk premium dengan harga terbaik. Limited stock!</p>
+        <h2 class="text-4xl font-bold mb-4">Lapar? Pesan Sekarang!</h2>
+        <p class="text-gray-400 mb-8 max-w-2xl mx-auto">Dapatkan promo menarik dan nikmati kelezatan hidangan kami.</p>
         <div class="flex gap-4 justify-center">
-            <a href="/produk" class="btn-primary px-8 py-4 rounded-lg font-bold text-lg inline-block">🔥 Shop Now 🔥</a>
-            @auth <a href="/orders" class="btn-outline px-8 py-4 rounded-lg font-bold text-lg inline-block text-cyan-400">📦 My Orders</a> @endauth
+            <a href="/produk" class="btn-primary px-8 py-4 rounded-lg font-bold text-lg inline-block">🍽️ Pesan Sekarang</a>
+            @auth <a href="/orders" class="btn-outline px-8 py-4 rounded-lg font-bold text-lg inline-block text-cyan-400">📦 Pesanan Saya</a> @endauth
         </div>
     </div>
 </section>
@@ -205,12 +205,12 @@
 <footer class="gradient-dark border-t border-gray-800 py-12">
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div><h3 class="text-xl font-bold mb-4"><span class="gradient-primary bg-clip-text text-transparent">GEAR</span><span class="text-white">STORE</span></h3><p class="text-gray-500 text-sm">Premium equipment for modern warriors.</p></div>
-            <div><h4 class="font-semibold mb-3">Quick Links</h4><ul class="space-y-2 text-gray-500 text-sm"><li><a href="/" class="hover:text-cyan-400 transition">Home</a></li><li><a href="/produk" class="hover:text-cyan-400 transition">Products</a></li><li><a href="/orders" class="hover:text-cyan-400 transition">My Orders</a></li></ul></div>
-            <div><h4 class="font-semibold mb-3">Support</h4><ul class="space-y-2 text-gray-500 text-sm"><li><a href="/faq" class="hover:text-cyan-400 transition">FAQ</a></li><li><a href="/shipping" class="hover:text-cyan-400 transition">Shipping</a></li><li><a href="/returns" class="hover:text-cyan-400 transition">Returns</a></li></ul></div>
-            <div><h4 class="font-semibold mb-3">Follow Us</h4><div class="flex gap-4"><a href="#" class="text-gray-500 hover:text-cyan-400 transition text-2xl">📷</a><a href="#" class="text-gray-500 hover:text-cyan-400 transition text-2xl">🐦</a><a href="#" class="text-gray-500 hover:text-cyan-400 transition text-2xl">📘</a><a href="#" class="text-gray-500 hover:text-cyan-400 transition text-2xl">🎵</a></div></div>
+            <div><h3 class="text-xl font-bold mb-4"><span class="gradient-primary bg-clip-text text-transparent">FOOD</span><span class="text-white">HUB</span></h3><p class="text-gray-500 text-sm">Kuliner lezat untuk setiap saat.</p></div>
+            <div><h4 class="font-semibold mb-3">Tautan Cepat</h4><ul class="space-y-2 text-gray-500 text-sm"><li><a href="/" class="hover:text-cyan-400 transition">Beranda</a></li><li><a href="/produk" class="hover:text-cyan-400 transition">Menu</a></li><li><a href="/orders" class="hover:text-cyan-400 transition">Pesanan Saya</a></li></ul></div>
+            <div><h4 class="font-semibold mb-3">Dukungan</h4><ul class="space-y-2 text-gray-500 text-sm"><li><a href="/faq" class="hover:text-cyan-400 transition">FAQ</a></li><li><a href="/shipping" class="hover:text-cyan-400 transition">Pengiriman</a></li><li><a href="/returns" class="hover:text-cyan-400 transition">Pengembalian</a></li></ul></div>
+            <div><h4 class="font-semibold mb-3">Ikuti Kami</h4><div class="flex gap-4"><a href="#" class="text-gray-500 hover:text-cyan-400 transition text-2xl">📷</a><a href="#" class="text-gray-500 hover:text-cyan-400 transition text-2xl">🐦</a><a href="#" class="text-gray-500 hover:text-cyan-400 transition text-2xl">📘</a><a href="#" class="text-gray-500 hover:text-cyan-400 transition text-2xl">🎵</a></div></div>
         </div>
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm"><p>&copy; 2026 GearStore. All rights reserved.</p></div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm"><p>&copy; 2026 FoodHub. All rights reserved.</p></div>
     </div>
 </footer>
 
@@ -222,11 +222,11 @@
 
     function displayProducts(products) {
         const grid = document.getElementById('productsGrid');
-        if (products.length === 0) { grid.innerHTML = '<div class="text-center py-20 col-span-full">Tidak ada produk di kategori ini</div>'; return; }
+        if (products.length === 0) { grid.innerHTML = '<div class="text-center py-20 col-span-full">Tidak ada menu di kategori ini</div>'; return; }
         grid.innerHTML = products.map(product => `
             <div class="product-card gradient-card rounded-2xl overflow-hidden cursor-pointer border border-gray-800">
                 <div class="h-48 gradient-primary flex items-center justify-center relative">
-                    <div class="text-6xl">${product.category_icon || '⚡'}</div>
+                    <div class="text-6xl">${product.category_icon || '🍽️'}</div>
                     <div class="absolute top-2 right-2 bg-black/50 rounded-full px-2 py-1 text-xs">${product.category_name}</div>
                 </div>
                 <div class="p-5">
@@ -251,7 +251,7 @@
     
     function addToCart(productId) {
         fetch('/cart/add', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' }, body: JSON.stringify({ product_id: productId, quantity: 1 }) })
-        .then(res => res.json()).then(data => { if (data.success) { updateCartCount(); showNotification('✓ Product added to cart!', 'success'); } });
+        .then(res => res.json()).then(data => { if (data.success) { updateCartCount(); showNotification('✓ Menu ditambahkan ke keranjang!', 'success'); } });
     }
     
     function updateCartCount() { fetch('/api/cart/count').then(res => res.json()).then(data => { document.getElementById('cartCount').innerText = data.count; }); }

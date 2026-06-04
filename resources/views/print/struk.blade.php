@@ -116,9 +116,9 @@
     <div class="struk">
         {{-- HEADER TOKO --}}
         <div class="text-center border-bottom">
-            <h3 class="bold large">{{ $transaction->store_name ?? 'TOKO KAMI' }}</h3>
-            <p class="small">{{ $transaction->store_address ?? 'Jl. Contoh No. 123, Kota' }}</p>
-            <p class="small">Telp: {{ $transaction->store_phone ?? '0812-3456-7890' }}</p>
+            <h3 class="bold large">FOODHUB</h3>
+            <p class="small">Jl. Contoh No. 123, Kota</p>
+            <p class="small">Telp: 0812-3456-7890</p>
             <div class="line"></div>
         </div>
 
@@ -256,12 +256,6 @@
             <p class="small">{{ $transaction->notes }}</p>
         </div>
         @endif
-
-        {{-- QR CODE (Opsional) --}}
-        {{-- <div class="qr-code">
-            <img src="data:image/png;base64,{{ $qrCode ?? '' }}" width="80" height="80">
-            <p class="small">Scan untuk membayar</p>
-        </div> --}}
 
         {{-- FOOTER --}}
         <div class="border-top text-center">

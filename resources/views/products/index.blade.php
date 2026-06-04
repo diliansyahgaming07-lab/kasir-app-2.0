@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products - GearStore</title>
+    <title>All Products - FoodHub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -27,7 +27,7 @@
 <nav class="navbar fixed top-0 w-full z-50">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <a href="/" class="text-2xl font-bold">
-            <span class="gradient-primary bg-clip-text text-transparent">GEAR</span><span class="text-white">STORE</span>
+            <span class="gradient-primary bg-clip-text text-transparent">FOOD</span><span class="text-white">HUB</span>
         </a>
         <div class="flex items-center gap-6">
             <a href="/" class="text-gray-300 hover:text-cyan-400">HOME</a>
@@ -83,7 +83,7 @@
             grid.innerHTML = data.map(product => `
                 <div class="product-card bg-gray-900 rounded-xl overflow-hidden border border-gray-800">
                     <div class="h-40 gradient-primary flex items-center justify-center">
-                        <div class="text-5xl">${product.category_icon || '⚡'}</div>
+                        <div class="text-5xl">${product.category_icon || '🍽️'}</div>
                     </div>
                     <div class="p-4">
                         <h3 class="font-bold text-lg">${product.name}</h3>
